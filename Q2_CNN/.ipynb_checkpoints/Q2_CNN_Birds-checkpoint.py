@@ -31,6 +31,8 @@ else:
 
 ## Transforms
 transform = transforms.Compose([
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomRotation(30),
     transforms.Resize((128,128)),
     transforms.ToTensor(),
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
@@ -42,20 +44,6 @@ data = torchvision.datasets.ImageFolder(
     transform = transform,
 )
 batch_size = 16
-
-## Investigating the distribution of samples per class in the dataset
-#print(dict(Counter(data.targets)))
-#print(data.class_to_idx)
-
-#counter = dict(Counter(data.targets))
-#index = dict(data.class_to_idx)
-#counts = dict({tuple(index.keys()):tuple(counter.values())})
-#print(counts)
-
-#class_counts = Counter(label for _, label in data)
-#for class_idx, count in class_counts.items():
-#    class_name = data.classes[class_idx]
-#    print(class_name, " : ", count, " samples")
 
 ## Investigation distribution
 classes = data.classes
@@ -99,7 +87,7 @@ images, labels = next(dataiter)
 imshow(torchvision.utils.make_grid(images))
 plt.savefig("example_training_images.png")
 
-## Defining a CNN - Inspiried by class notes
+## Defining a CNN - Inspiried by class notes. Relu activation function - See Q3 for variations
 print("\n\n>>> Defining a CNN")
 class Net(nn.Module):
     def __init__(self, num_classes = 6, input_size=128):
@@ -138,7 +126,7 @@ net.to(device)
 
 ## Training the network
 ## Training for 15 epochs
-print("\n\n>>> Training network, 15 batches")
+print("\n\n>>> Training network, 10 epochs")
 for epoch in range(10):
     running_loss = 0.0
     
@@ -183,7 +171,7 @@ with torch.no_grad():
                 correct_pred[classes[label]] += 1
             total_pred[classes[label]] += 1
 # print accuracy for each class
+print("\n\n>>> Testing completed, results follow")
 for classname, correct_count in correct_pred.items():
     accuracy = 100 * float(correct_count) / total_pred[classname]
-    print("\n\n>>> Testing completed, results follow")
     print(f'Accuracy for class: {classname:5s} is {accuracy:.1f} %')
