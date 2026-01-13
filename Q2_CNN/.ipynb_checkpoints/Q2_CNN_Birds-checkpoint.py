@@ -31,12 +31,12 @@ else:
 
 ## Transforms
 transform = transforms.Compose([
+    transforms.Resize((128,128)),
     transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(30),
-    transforms.Resize((128,128)),
     transforms.ToTensor(),
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-])    
+])  
 
 ## Loading dataset and defining batch size
 data = torchvision.datasets.ImageFolder(
@@ -74,7 +74,7 @@ test_loader = DataLoader(
     num_workers = 0
 )
 ## saving figures to .txt. Originally from class notes, but updated to save in a .txt file
-print("\n\n>>> Saving a sample of images to images.png")
+print("\n\n>>> Saving a sample of images to example_training_images.png")
 def imshow(img):
     img = img / 2 + 0.5
     npimg = img.numpy()
