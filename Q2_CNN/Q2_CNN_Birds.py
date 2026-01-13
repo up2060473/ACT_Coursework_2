@@ -29,7 +29,7 @@ else:
     print("Cuda GPU found, switching device to increase performance\n\n")
     device = "cuda"
 
-## Transforms
+## Transforms, inspired by class notes
 transform = transforms.Compose([
     transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(30),
