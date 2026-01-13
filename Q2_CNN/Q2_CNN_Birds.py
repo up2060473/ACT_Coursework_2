@@ -139,7 +139,7 @@ net.to(device)
 ## Training the network
 ## Training for 15 epochs
 print("\n\n>>> Training network, 15 batches")
-for epoch in range(15):
+for epoch in range(5):
     running_loss = 0.0
     
     for i, (inputs, labels) in enumerate(train_loader):
