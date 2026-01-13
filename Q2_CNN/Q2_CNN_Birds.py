@@ -63,3 +63,39 @@ class_counts = Counter(data.targets)
 for index, count in class_counts.items():
     print(f"{data.classes[index]} : {count}")
     
+## Splitting data
+## train size = 80%
+print("\n\n>>> Splitting data into 80% training and 20% testing")
+train_size = int(0.8 * len(data))
+test_size = len(data) - train_size
+train_dataset, test_dataset = random_split(data, [train_size, test_size])
+
+## Data_loaders
+## num_workers = 0 as 2 returned error - sciserver
+train_loader = DataLoader(
+    train_dataset,
+    batch_size = batch_size,
+    shuffle = True,
+    num_workers = 0
+)
+
+test_loader = DataLoader(
+    test_dataset,
+    batch_size = batch_size,
+    shuffle = False,
+    num_workers = 0
+)
+## saving figures to .txt. Originally from class notes, but updated to save in a .txt file
+print("\n\n>>> Saving a sample of images to images.png")
+def imshow(img):
+    img = img / 2 + 0.5
+    npimg = img.numpy()
+    plt.imshow(np.transpose(npimg, (1,2,0)))
+    plt.axis("off")
+    plt.title("Example Images")
+    plt.show()
+dataiter = iter(train_loader)
+images, labels = next(dataiter)
+imshow(torchvision.utils.make_grid(images))
+plt.savefig("images.png")
+
