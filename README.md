@@ -107,7 +107,7 @@ Results:
 Class specific results:
 
     - American Goldfinch: High accuracy across all activation fucntions due to vibrant, distinct yellow feathers
-    - Barn Owl: Moderate performance - Relu and leakly Relu captured the hear-shaped face effectively
+    - Barn Owl: Moderate performance - Relu and leakly Relu captured the heart-shaped face effectively
     - Carmine Bee Eater: High accuracy due to brigh red pink plumages
     - Downy Woodpecker: More challenging due to subtle features
     - Emperor Penguin: Best perfomance with Leaky RElu (100%) and Reli (92%)
