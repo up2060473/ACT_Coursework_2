@@ -110,7 +110,7 @@ Class specific results:
     - Barn Owl: Moderate performance - Relu and leakly Relu captured the heart-shaped face effectively
     - Carmine Bee Eater: High accuracy due to brigh red pink plumages
     - Downy Woodpecker: More challenging due to subtle features
-    - Emperor Penguin: Best perfomance with Leaky RElu (100%) and Reli (92%)
+    - Emperor Penguin: Best perfomance with Leaky RElu (100%) and Relu (92%)
     - Flamingo: lower performance, but Relu was able to detect pronounced features
 
 How Random Forest Classifier compares with CNN
