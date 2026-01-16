@@ -5,7 +5,7 @@ This is the repository for coursework 2, up2060473. This coursework uses a datas
 1. Directory Overview
 2. Dataset used
 3. Packages used
-4. Inestigation into Q3 nad result 
+4. Inestigation into Q3 and result 
 
 ## Directory Overview:
 Archive
